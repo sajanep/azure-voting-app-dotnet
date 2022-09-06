@@ -1,0 +1,4 @@
+docker login -u sajanemmanuel
+docker build -t sajanemmanuel/azurevotingapp-dotnet .
+docker tag sajanemmanuel/azurevotingapp-dotnet sajanemmanuel/azurevotingapp-dotnet:v1
+docker push sajanemmanuel/azurevotingapp-dotnet:v1

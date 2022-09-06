@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-front-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: voting-front-pod
+      app: azure-voting-app
+  template:
+    metadata:
+      labels:
+        name: voting-front-pod
+        app: azure-voting-app
+    spec:
+      containers:
+        - name: voting-front
+          image: sajanemmanuel/azurevotingapp-dotnet:v1
+          ports:
+            - containerPort: 80
+          env:
+            - name: ConnectionStrings__RedisHost
+              value: "azure-vote-back"
