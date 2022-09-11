@@ -21,4 +21,4 @@ spec:
             - containerPort: 80
           env:
             - name: ConnectionStrings__RedisHost
-              value: "redis"
+              value: "redis-service"
