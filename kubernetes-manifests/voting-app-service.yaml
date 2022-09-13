@@ -6,11 +6,9 @@ metadata:
     name: voting-front-service
     app: azure-voting-app
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 80
-      targetPort: 80
-      nodePort: 30004
   selector:
     name: voting-front-pod
     app: azure-voting-app
