@@ -26,3 +26,8 @@ spec:
           env:
             - name: ALLOW_EMPTY_PASSWORD
               value: "yes"
+          resources:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 500m

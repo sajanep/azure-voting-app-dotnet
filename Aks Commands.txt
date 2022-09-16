@@ -1,7 +1,14 @@
 az login
+az account set --subscription 96479829-e632-415e-b0b1-0113763e9de0
+az group create --name AksStudy --location centralindia
+az aks create -g AksStudy -n myAksCluster --enable-managed-identity --node-count 1 --enable-addons monitoring --enable-msi-auth-for-monitoring --generate-ssh-keys --node-vm-size standard_d2as_v4
+
 az aks get-credentials --resource-group AKSStudy --name myAksCluster
+
 kubectl apply -f redis-deploy.yaml
 kubectl apply -f redis-service.yaml
 kubectl apply -f voting-app-deploy.yaml
 kubectl apply -f voting-app-service.yaml
 kubectl get service voting-app-service
+
+kubectl scale --replicas=5 deployment/voting-app-deploy
