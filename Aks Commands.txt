@@ -9,6 +9,21 @@ kubectl apply -f redis-deploy.yaml
 kubectl apply -f redis-service.yaml
 kubectl apply -f voting-app-deploy.yaml
 kubectl apply -f voting-app-service.yaml
-kubectl get service voting-app-service
+kubectl get service voting-front-service
 
-kubectl scale --replicas=5 deployment/voting-app-deploy
+kubectl scale --replicas=5 deployments/voting-front-deploy
+
+kuectl describe pod
+
+kubectl autoscale deployment voting-front-deploy --cpu-percent=50 --min=3 --max=10
+kubectl delete hpa voting-front-deploy
+
+kubectl get hpa
+
+az aks scale --resource-group AksStudy --name myAKSCluster --node-count 3
+
+kubectl set image deployment/voting-front-deploy voting-front=sajanemmanuel/azurevotingapp-dotnet:v2
+
+kubectl rollout history deployments/voting-front-deploy
+
+kubectl rollout undo deployments/voting-front-deploy --to-revision=1
