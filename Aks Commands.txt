@@ -22,7 +22,7 @@ kubectl get hpa
 
 az aks scale --resource-group AksStudy --name myAKSCluster --node-count 3
 
-kubectl set image deployment/voting-front-deploy voting-front=sajanemmanuel/azurevotingapp-dotnet:v2
+kubectl set image deployments/voting-front-deploy voting-front=sajanemmanuel/azurevotingapp-dotnet:v2
 
 kubectl rollout history deployments/voting-front-deploy
 
